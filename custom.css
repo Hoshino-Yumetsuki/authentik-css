@@ -1,0 +1,128 @@
+/* --- Authentik 登录页面自定义样式 --- */
+
+/* 1. 背景图片样式 (保持不变) */
+.pf-c-background-image {
+    /* !!! 请将 URL 替换为你自己的背景图片地址 !!! */
+    --ak-flow-background: url('https://pximg.yumetsuki.moe/img-original/img/2024/12/06/00/00/25/124929021_p0.jpg') !important;
+    background-image: var(--ak-flow-background) !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    min-height: 100vh;
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: -1 !important;
+}
+
+/* 确保页面主要内容区域透明 */
+.pf-c-page__drawer,
+.pf-c-drawer,
+.pf-c-drawer__main,
+.pf-c-drawer__content,
+.pf-c-drawer__body {
+    background: transparent !important;
+}
+
+.pf-c-login {
+    max-height: 100vh;
+}
+
+.pf-c-page__drawer {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    /* 确保抽屉容器至少和视口一样高 */
+    box-sizing: border-box;
+}
+
+
+/* --- 登录容器样式 --- */
+
+/* 2. 默认样式 (移动端优先) - 应用于 .ak-login-container */
+.ak-login-container {
+    border-radius: 16px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15) !important;
+    display: block;
+    /* 减少垂直外边距 */
+    margin: 1rem auto !important;
+    /* 上下 1rem, 左右自动居中 */
+    width: 90% !important;
+    max-width: 450px !important;
+    padding: 1.5rem !important;
+    /* 也可以适当减少内边距 */
+    overflow: hidden;
+    box-sizing: border-box;
+    height: auto !important;
+    /* 高度自适应 */
+    min-height: 0 !important;
+    /* 允许收缩 */
+}
+
+/* 3. 重置 .pf-c-login__main 的样式 (保持不变) */
+.pf-c-login__main {
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+    height: auto !important;
+    /* 高度自适应 */
+}
+
+
+/* --- 桌面端样式 (例如：宽度 >= 992px) --- */
+@media (min-width: 992px) {
+
+    /* 将 .pf-c-drawer__body 设置为 Flex 容器 */
+    .pf-c-drawer__body {
+        display: flex !important;
+        /* flex-direction: column; */
+        /* 改回默认行方向 */
+        justify-content: flex-end;
+        /* 水平靠右 */
+        align-items: center;
+        /* 垂直居中 */
+        /* min-height: 90vh; */
+        /* 移除固定的最小高度 */
+        min-height: calc(100vh - 4rem);
+        /* 可选：设置最小高度，留出上下空间 */
+        height: auto !important;
+        /* 允许高度自适应 */
+        width: 100%;
+        padding-right: 2rem !important;
+        /* 上下 2rem, 左右 5% 内边距 */
+        box-sizing: border-box;
+    }
+
+    /* 设置 Flex 项目 (.pf-c-login.stacked) 的宽度 */
+    .pf-c-login.stacked {
+        max-width: 500px !important;
+        margin: 0 !important;
+        height: auto !important;
+        /* 高度自适应 */
+    }
+
+    /* 让 .ak-login-container 填充其父容器 (.pf-c-login.stacked) */
+    .ak-login-container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 2rem !important;
+        /* 桌面端内边距 */
+        height: auto !important;
+        /* 确保高度自适应 */
+        min-height: 0 !important;
+        /* 允许收缩 */
+    }
+}
+
+/* --- 样式结束 --- */
