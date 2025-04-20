@@ -1,8 +1,5 @@
-/* --- Authentik 登录页面自定义样式 --- */
-
-/* 1. 背景图片样式 (保持不变) */
 .pf-c-background-image {
-    /* !!! 请将 URL 替换为你自己的背景图片地址 !!! */
+    /* 将 URL 替换为你自己的背景图片地址 */
     --ak-flow-background: url('https://pximg.yumetsuki.moe/img-original/img/2024/12/06/00/00/25/124929021_p0.jpg') !important;
     background-image: var(--ak-flow-background) !important;
     background-size: cover !important;
@@ -16,32 +13,32 @@
     z-index: -1 !important;
 }
 
-/* 确保页面主要内容区域透明 */
 .pf-c-page__drawer,
 .pf-c-drawer,
 .pf-c-drawer__main,
 .pf-c-drawer__content,
 .pf-c-drawer__body {
     background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.pf-c-page__drawer{
+     position: relative;
+     z-index: 1;
+     min-height: 100vh;
+     box-sizing: border-box;
+     padding: 0 !important;
+     margin: 0 !important;
 }
 
 .pf-c-login {
     max-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.pf-c-page__drawer {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    /* 确保抽屉容器至少和视口一样高 */
-    box-sizing: border-box;
-}
-
-
-/* --- 登录容器样式 --- */
-
-/* 2. 默认样式 (移动端优先) - 应用于 .ak-login-container */
 .ak-login-container {
+    /* 保留移动端的样式 */
     border-radius: 16px !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(12px) !important;
@@ -49,22 +46,16 @@
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15) !important;
     display: block;
-    /* 减少垂直外边距 */
     margin: 1rem auto !important;
-    /* 上下 1rem, 左右自动居中 */
     width: 90% !important;
     max-width: 450px !important;
     padding: 1.5rem !important;
-    /* 也可以适当减少内边距 */
-    overflow: hidden;
+    overflow: hidden; /* 移动端保持 hidden */
     box-sizing: border-box;
     height: auto !important;
-    /* 高度自适应 */
     min-height: 0 !important;
-    /* 允许收缩 */
 }
 
-/* 3. 重置 .pf-c-login__main 的样式 (保持不变) */
 .pf-c-login__main {
     background: none !important;
     backdrop-filter: none !important;
@@ -75,54 +66,84 @@
     border-radius: 0 !important;
     opacity: 1 !important;
     height: auto !important;
-    /* 高度自适应 */
+    margin: 0 !important;
 }
 
 
-/* --- 桌面端样式 (例如：宽度 >= 992px) --- */
+/* 桌面端 */
 @media (min-width: 992px) {
 
-    /* 将 .pf-c-drawer__body 设置为 Flex 容器 */
+    /* ==   桌面布局控制变量   == */
+    :root { /* Variables apply globally but used in MQ */
+         --login-box-horizontal-align: flex-start; /* 'flex-start' or 'flex-end' */
+         --login-box-width-percent: 35%;
+         --login-box-bg-color: rgba(30, 30, 40, 0.6) !important;
+         --login-box-backdrop-blur: blur(16px) !important;
+    }
+
+    .pf-c-drawer__main,
+    .pf-c-drawer__content {
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        height: 100%;
+        min-height: 100vh;
+    }
+
     .pf-c-drawer__body {
         display: flex !important;
-        /* flex-direction: column; */
-        /* 改回默认行方向 */
-        justify-content: flex-end;
-        /* 水平靠右 */
-        align-items: center;
-        /* 垂直居中 */
-        /* min-height: 90vh; */
-        /* 移除固定的最小高度 */
-        min-height: calc(100vh - 4rem);
-        /* 可选：设置最小高度，留出上下空间 */
-        height: auto !important;
-        /* 允许高度自适应 */
+        flex-direction: row !important;
+        justify-content: var(--login-box-horizontal-align) !important;
+        align-items: stretch !important;
+        min-height: 100vh !important;
+        height: 100vh !important;
         width: 100%;
-        padding-right: 2rem !important;
-        /* 上下 2rem, 左右 5% 内边距 */
-        box-sizing: border-box;
-    }
-
-    /* 设置 Flex 项目 (.pf-c-login.stacked) 的宽度 */
-    .pf-c-login.stacked {
-        max-width: 500px !important;
+        padding: 0 !important;
         margin: 0 !important;
-        height: auto !important;
-        /* 高度自适应 */
+        border: none !important;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
-    /* 让 .ak-login-container 填充其父容器 (.pf-c-login.stacked) */
+    .pf-c-login.stacked, .pf-c-login {
+         width: var(--login-box-width-percent) !important;
+         max-width: none !important;
+         margin: 0 !important;
+         height: 100% !important;
+         flex-shrink: 0;
+         padding: 0 !important;
+         border: none !important;
+         box-sizing: border-box;
+    }
+
     .ak-login-container {
         width: 100% !important;
+        height: 100vh !important;
         max-width: none !important;
         margin: 0 !important;
-        padding: 2rem !important;
-        /* 桌面端内边距 */
-        height: auto !important;
-        /* 确保高度自适应 */
-        min-height: 0 !important;
-        /* 允许收缩 */
+        box-sizing: border-box;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background-color: var(--login-box-bg-color);
+        backdrop-filter: var(--login-box-backdrop-blur);
+        -webkit-backdrop-filter: var(--login-box-backdrop-blur);
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        overflow: hidden !important;
     }
-}
 
-/* --- 样式结束 --- */
+     .ak-login-container .pf-c-login__main {
+         width: 100%;
+         flex-shrink: 0;
+         overflow: hidden;
+     }
+
+     .ak-login-container .pf-c-login__footer {
+         margin-top: auto;
+         padding-top: 1rem;
+         width: 100%;
+         flex-shrink: 0;
+     }
+}
