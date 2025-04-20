@@ -20,11 +20,11 @@
 .pf-c-drawer__body {
     background: transparent !important;
 }
-.pf-c-page__drawer{
-     position: relative;
-     z-index: 1;
-     min-height: 100vh;
-     box-sizing: border-box;
+.pf-c-page__drawer {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
 .pf-c-login {
@@ -68,11 +68,13 @@
 @media (min-width: 992px) {
 
     /* ==   桌面布局控制变量   == */
-    :root { /* Variables apply globally but used in MQ */
-         --login-box-horizontal-align: flex-start; /* 'flex-start' or 'flex-end' */
-         --login-box-width-percent: 35%;
-         --login-box-bg-color: rgba(30, 30, 40, 0.6) !important;
-         --login-box-backdrop-blur: blur(16px) !important;
+    :root {
+        /* Variables apply globally but used in MQ */
+        --login-box-horizontal-align: flex-start;
+        /* 'flex-start' or 'flex-end' */
+        --login-box-width-percent: 35%;
+        --login-box-bg-color: rgba(30, 30, 40, 0.6) !important;
+        --login-box-backdrop-blur: blur(16px) !important;
     }
 
     .pf-c-drawer__body:has(.pf-c-login) {
@@ -92,18 +94,17 @@
 
     .pf-c-drawer__body:has(.pf-c-login) .pf-c-login.stacked,
     .pf-c-drawer__body:has(.pf-c-login) .pf-c-login {
-         width: var(--login-box-width-percent) !important;
-         max-width: none !important;
-         margin: 0 !important;
-         height: 100% !important;
-         flex-shrink: 0;
-         padding: 0 !important;
-         border: none !important;
-         box-sizing: border-box;
+        width: var(--login-box-width-percent) !important;
+        max-width: none !important;
+        margin: 0 !important;
+        height: 100% !important;
+        flex-shrink: 0;
+        padding: 0 !important;
+        border: none !important;
+        box-sizing: border-box;
     }
 
     .pf-c-drawer__body:has(.pf-c-login) .ak-login-container {
-        padding: 3rem 2.5rem !important; /* 保持内部边距 */
         width: 100% !important;
         height: 100vh !important;
         max-width: none !important;
@@ -121,22 +122,26 @@
         overflow: hidden !important;
     }
 
-     .pf-c-drawer__body:has(.pf-c-login) .ak-login-container .pf-c-login__main {
-         width: 100%;
-         flex-shrink: 0;
-         overflow: hidden;
-     }
+    .pf-c-drawer__body:has(.pf-c-login) .ak-login-container .pf-c-login__main {
+        width: 100%;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
 
-     .pf-c-drawer__body:has(.pf-c-login) .ak-login-container .pf-c-login__footer {
-         margin-top: auto;
-         padding-top: 1rem;
-         width: 100%;
-         flex-shrink: 0;
-     }
+    .pf-c-drawer__body:has(.pf-c-login) .ak-login-container .pf-c-login__footer {
+        margin-top: auto;
+        padding-top: 1rem;
+        width: 100%;
+        flex-shrink: 0;
+    }
 
-     /* 对于非登录页面的 .pf-c-drawer__body 恢复默认或需要的 padding */
+    .pf-c-drawer__body:not(:has(.pf-c-login)) {
+        padding: var(--pf-c-drawer__body--PaddingTop, 1.5rem) var(--pf-c-drawer__body--PaddingRight, 1.5rem) var(--pf-c-drawer__body--PaddingBottom, 1.5rem) var(--pf-c-drawer__body--PaddingLeft, 1.5rem);
+    }
+}
 
-     .pf-c-drawer__body:not(:has(.pf-c-login)) {
-          padding: var(--pf-c-drawer__body--PaddingTop, 1.5rem) var(--pf-c-drawer__body--PaddingRight, 1.5rem) var(--pf-c-drawer__body--PaddingBottom, 1.5rem) var(--pf-c-drawer__body--PaddingLeft, 1.5rem);
-     }
+@media (min-width: 1200px) {
+    .pf-c-drawer__body:has(.pf-c-login) .ak-login-container {
+        padding: 3rem 2.5rem !important;
+    }
 }
