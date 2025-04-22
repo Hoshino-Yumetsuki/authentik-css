@@ -138,6 +138,14 @@
     .pf-c-drawer__body:not(:has(.pf-c-login)) {
         padding: var(--pf-c-drawer__body--PaddingTop, 1.5rem) var(--pf-c-drawer__body--PaddingRight, 1.5rem) var(--pf-c-drawer__body--PaddingBottom, 1.5rem) var(--pf-c-drawer__body--PaddingLeft, 1.5rem);
     }
+
+    .pf-c-login__main-header .pf-c-title.pf-m-3xl {
+        color: white !important;
+    }
+
+    .pf-c-login__main-body .pf-c-form__group {
+        color: white !important;
+    }
 }
 
 @media (min-width: 1200px) {
