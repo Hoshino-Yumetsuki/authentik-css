@@ -1,6 +1,6 @@
 .pf-c-background-image {
     /* 将 URL 替换为你自己的背景图片地址 */
-    --ak-flow-background: url('https://fastly.jsdelivr.net/gh/Hoshino-Yumetsuki/authentik-css@main/124929021_p0.webp') !important;
+    --ak-flow-background: url('https://img.r2.yumetsuki.moe/q78kg/124929021_p0.webp') !important;
     background-image: var(--ak-flow-background) !important;
     background-size: cover !important;
     background-position: center center !important;
