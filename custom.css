@@ -20,6 +20,7 @@
 .pf-c-drawer__body {
     background: transparent !important;
 }
+
 .pf-c-page__drawer {
     position: relative;
     z-index: 1;
@@ -144,6 +145,10 @@
     }
 
     .pf-c-login__main-body .pf-c-form__group {
+        color: white !important;
+    }
+
+    .pf-c-login__main-body .pf-c-form p {
         color: white !important;
     }
 }
