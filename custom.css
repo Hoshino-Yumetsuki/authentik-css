@@ -71,11 +71,11 @@
     /* ==   桌面布局控制变量   == */
     :root {
         /* Variables apply globally but used in MQ */
-        --login-box-horizontal-align: flex-start;
+        --login-box-horizontal-align: flex-end;
         /* 'flex-start' or 'flex-end' */
-        --login-box-width-percent: 35%;
-        --login-box-bg-color: rgba(30, 30, 40, 0.6) !important;
-        --login-box-backdrop-blur: blur(16px) !important;
+        --login-box-width-percent: 33%;
+        --login-box-bg-color: rgba(20, 20, 25, 0.8) !important;
+        --login-box-backdrop-blur: blur(24px) !important;
     }
 
     .pf-c-drawer__body:has(.pf-c-login) {
@@ -113,7 +113,8 @@
         box-sizing: border-box;
         border-radius: 0 !important;
         border: none !important;
-        box-shadow: none !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5) !important;
         background-color: var(--login-box-bg-color);
         backdrop-filter: var(--login-box-backdrop-blur);
         -webkit-backdrop-filter: var(--login-box-backdrop-blur);
@@ -157,4 +158,46 @@
     .pf-c-drawer__body:has(.pf-c-login) .ak-login-container {
         padding: 3rem 2.5rem !important;
     }
+}
+
+/* ==  通用组件美化  == */
+
+/* 输入框美化 */
+.pf-c-form-control {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+    border-radius: 6px !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.pf-c-form-control:focus,
+.pf-c-form-control:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* 按钮美化 */
+.pf-c-button.pf-m-primary {
+    background-color: #0066cc !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3) !important;
+    transition: all 0.2s ease;
+}
+
+.pf-c-button.pf-m-primary:hover {
+    background-color: #0077ee !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 102, 204, 0.4) !important;
+}
+
+/* 链接颜色优化 */
+.pf-c-login__main-footer-links-item-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.pf-c-login__main-footer-links-item-link:hover {
+    color: #fff !important;
+    text-decoration: none !important;
 }
